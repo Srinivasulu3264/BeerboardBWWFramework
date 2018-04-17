@@ -170,7 +170,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Nutrition" translatesAutoresizingMaskIntoConstraints="NO" id="JeM-Oh-DKD">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="8" height="160"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome, Sundar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQU-fn-rKO">
                                                         <rect key="frame" x="8" y="8" width="226.5" height="35"/>
@@ -224,7 +224,6 @@
                                                     <constraint firstAttribute="trailing" secondItem="FT0-hT-7Is" secondAttribute="trailing" constant="8" id="2Pr-h9-Mdh"/>
                                                     <constraint firstAttribute="trailing" secondItem="tvb-et-qIr" secondAttribute="trailing" constant="8" id="3j4-hS-Zlk"/>
                                                     <constraint firstAttribute="bottom" secondItem="ML7-Aj-pux" secondAttribute="bottom" constant="8" id="55r-cH-CMG"/>
-                                                    <constraint firstAttribute="trailing" secondItem="JeM-Oh-DKD" secondAttribute="trailing" id="61o-kp-wok"/>
                                                     <constraint firstItem="ML7-Aj-pux" firstAttribute="leading" secondItem="8zG-Rc-rm3" secondAttribute="leading" constant="8" id="7C6-ZG-iCa"/>
                                                     <constraint firstItem="QQU-fn-rKO" firstAttribute="top" secondItem="8zG-Rc-rm3" secondAttribute="top" constant="8" id="8FC-2Z-XbN"/>
                                                     <constraint firstItem="BKl-ks-b2z" firstAttribute="top" secondItem="QQU-fn-rKO" secondAttribute="bottom" constant="3" id="AOO-PR-GGj"/>
@@ -321,7 +320,7 @@
                                                         <rect key="frame" x="0.0" y="80" width="375" height="417"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <prototypes>
-                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="titleCell" rowHeight="30" id="9GU-gX-BeB" customClass="RedeemViewBeerchipTableTitleTableViewCell" customModule="BeerboardAppleBeesFramework" customModuleProvider="target">
+                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="titleCell" rowHeight="30" id="9GU-gX-BeB" customClass="RedeemViewBeerchipTableTitleTableViewCell" customModule="BeerboardBWWFramework" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="28" width="375" height="30"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9GU-gX-BeB" id="kCI-If-m2J">
@@ -356,7 +355,7 @@
                                                                     <outlet property="beerchipsLbl" destination="kd6-DN-LpT" id="UU6-YP-2rk"/>
                                                                 </connections>
                                                             </tableViewCell>
-                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="subTitleCell" rowHeight="50" id="SwU-ix-qOn" customClass="RedeemviewBeerchipTableSubTitlesTableViewCell" customModule="BeerboardAppleBeesFramework" customModuleProvider="target">
+                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="subTitleCell" rowHeight="50" id="SwU-ix-qOn" customClass="RedeemviewBeerchipTableSubTitlesTableViewCell" customModule="BeerboardBWWFramework" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="58" width="375" height="50"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SwU-ix-qOn" id="ALg-3x-yBP">
@@ -522,7 +521,6 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="WJn-mf-fUN" firstAttribute="leading" secondItem="DDJ-GO-ihV" secondAttribute="leading" id="Dwf-Jt-jRD"/>
-                                    <constraint firstItem="WJn-mf-fUN" firstAttribute="centerX" secondItem="DDJ-GO-ihV" secondAttribute="centerX" id="SfZ-2d-i1d"/>
                                     <constraint firstItem="WJn-mf-fUN" firstAttribute="top" secondItem="DDJ-GO-ihV" secondAttribute="top" id="dBX-nK-K6S"/>
                                     <constraint firstAttribute="trailing" secondItem="WJn-mf-fUN" secondAttribute="trailing" id="iLC-Ld-40y"/>
                                     <constraint firstAttribute="bottom" secondItem="WJn-mf-fUN" secondAttribute="bottom" constant="-197" id="xek-ic-021"/>
@@ -533,6 +531,7 @@
                         <constraints>
                             <constraint firstItem="DDJ-GO-ihV" firstAttribute="leading" secondItem="qdR-uD-xQB" secondAttribute="leading" id="0Xc-5Y-bNk"/>
                             <constraint firstItem="DDJ-GO-ihV" firstAttribute="top" secondItem="4qA-lF-Je1" secondAttribute="top" id="EKt-2s-N1Q"/>
+                            <constraint firstItem="WJn-mf-fUN" firstAttribute="width" secondItem="qdR-uD-xQB" secondAttribute="width" id="IXc-4K-JUS"/>
                             <constraint firstItem="DDJ-GO-ihV" firstAttribute="bottom" secondItem="4qA-lF-Je1" secondAttribute="bottom" id="d03-Pn-Obx"/>
                             <constraint firstAttribute="trailing" secondItem="DDJ-GO-ihV" secondAttribute="trailing" id="kGe-r5-zEV"/>
                         </constraints>

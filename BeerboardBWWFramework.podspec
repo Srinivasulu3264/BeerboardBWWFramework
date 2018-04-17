@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
 
   s.name         = "BeerboardBWWFramework"
 
-  s.version      = "0.0.3"
+  s.version      = "0.0.4"
 
   s.summary      = "It Contains menu button along with Beerchip view. In beerchipView we have a View/Redeem button, which will open the pod functionality"
 
@@ -34,7 +34,7 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = "11.0"
 
-   s.source       = { :git => "https://github.com/Srinivasulu3264/BeerboardBWWFramework.git", :tag => "0.0.3" }
+   s.source       = { :git => "https://github.com/Srinivasulu3264/BeerboardBWWFramework.git", :tag => "0.0.4" }
 
   s.source_files  = "BeerboardBWWFramework", "BeerboardBWWFramework/**/*.{h,m, swift}"
 
