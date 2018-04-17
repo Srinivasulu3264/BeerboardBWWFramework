@@ -8,10 +8,11 @@
 
 import UIKit
 
-class BeerboardBWWViewController: UIViewController {
+public class BeerboardBWWViewController: UIViewController {
 
     @IBOutlet weak var viewRedeemBtn: UIButton!
-    override func viewDidLoad() {
+    
+    override public func viewDidLoad() {
         super.viewDidLoad()
         viewRedeemBtn.layer.cornerRadius = 8.0
         // Do any additional setup after loading the view.
