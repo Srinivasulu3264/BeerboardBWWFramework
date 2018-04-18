@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		89379AAD208616560001CD15 /* RedeemViewBeerchipTableTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89379AAB208616560001CD15 /* RedeemViewBeerchipTableTitleTableViewCell.swift */; };
 		89379AAE208616560001CD15 /* RedeemviewBeerchipTableSubTitlesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89379AAC208616560001CD15 /* RedeemviewBeerchipTableSubTitlesTableViewCell.swift */; };
+		894538FC20872A65007021F3 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894538FB20872A65007021F3 /* LocationTableViewCell.swift */; };
 		894BB2B2207C83B100E65595 /* BeerboardBWWFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894BB2A8207C83B000E65595 /* BeerboardBWWFramework.framework */; };
 		894BB2B7207C83B100E65595 /* BeerboardBWWFrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894BB2B6207C83B100E65595 /* BeerboardBWWFrameworkTests.swift */; };
 		894BB2B9207C83B100E65595 /* BeerboardBWWFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 894BB2AB207C83B000E65595 /* BeerboardBWWFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		89379AAB208616560001CD15 /* RedeemViewBeerchipTableTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemViewBeerchipTableTitleTableViewCell.swift; sourceTree = "<group>"; };
 		89379AAC208616560001CD15 /* RedeemviewBeerchipTableSubTitlesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemviewBeerchipTableSubTitlesTableViewCell.swift; sourceTree = "<group>"; };
+		894538FB20872A65007021F3 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
 		894BB2A8207C83B000E65595 /* BeerboardBWWFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BeerboardBWWFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		894BB2AB207C83B000E65595 /* BeerboardBWWFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BeerboardBWWFramework.h; sourceTree = "<group>"; };
 		894BB2AC207C83B000E65595 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				894BB2AB207C83B000E65595 /* BeerboardBWWFramework.h */,
 				894BB2C4207C879000E65595 /* BeerboardBWWViewController.swift */,
 				894BB2C6207C8BB800E65595 /* WelcomeViewController.swift */,
+				894538FB20872A65007021F3 /* LocationTableViewCell.swift */,
 				89379AAC208616560001CD15 /* RedeemviewBeerchipTableSubTitlesTableViewCell.swift */,
 				89379AAB208616560001CD15 /* RedeemViewBeerchipTableTitleTableViewCell.swift */,
 				894BB2C2207C84B000E65595 /* BeerboardBWWFrameworkStoryboard.storyboard */,
@@ -216,6 +219,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				89379AAD208616560001CD15 /* RedeemViewBeerchipTableTitleTableViewCell.swift in Sources */,
+				894538FC20872A65007021F3 /* LocationTableViewCell.swift in Sources */,
 				894BB2C5207C879000E65595 /* BeerboardBWWViewController.swift in Sources */,
 				894BB2C7207C8BB800E65595 /* WelcomeViewController.swift in Sources */,
 				89379AAE208616560001CD15 /* RedeemviewBeerchipTableSubTitlesTableViewCell.swift in Sources */,
