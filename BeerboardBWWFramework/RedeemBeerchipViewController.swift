@@ -28,8 +28,7 @@ class RedeemBeerchipViewController: UIViewController,UITextFieldDelegate {
     var isRedeemBeerchipVCAdding = false
     var isRedeemBeerchipVCRemoving = false
     
-    var cashOutVC = UIViewController()
-    var redeemBeerchipVC = RedeemBeerchipViewController()
+    var cashOutVC = CashOutViewController()
     
     var redeemBeerchipVCDelegate : redeemBeerchipVCProtocol?
     
@@ -42,10 +41,10 @@ class RedeemBeerchipViewController: UIViewController,UITextFieldDelegate {
         view.addGestureRecognizer(tap)
         receiptIDTxtfield.delegate = self
         
-          let beerboardBWWStoryboard = UIStoryboard(name: "BeerboardBWWFrameworkStoryboard", bundle: Bundle(for: BeerboardBWWViewController.self))
+        let beerboardBWWStoryboard = UIStoryboard(name: "BeerboardBWWFrameworkStoryboard", bundle: Bundle(for: CashOutViewController.self))
         cashOutVC =  beerboardBWWStoryboard.instantiateViewController(withIdentifier: "CashOutViewController") as! CashOutViewController
         
-        redeemBeerchipVC =  beerboardBWWStoryboard.instantiateViewController(withIdentifier: "RedeemBeerchipViewController") as! RedeemBeerchipViewController
+     //   redeemBeerchipVC =  beerboardBWWStoryboard.instantiateViewController(withIdentifier: "RedeemBeerchipViewController") as! RedeemBeerchipViewController
         
         // Do any additional setup after loading the view.
     }
@@ -84,8 +83,7 @@ class RedeemBeerchipViewController: UIViewController,UITextFieldDelegate {
         
         if cashoutBtn.currentTitle == "REDEEM"
         {
-            isRedeemBeerchipVCAdding = true
-            redeemBeerchipVCAddingAndRemoving()
+            
             
             isCashoutVCRemoving = true
             cashoutVCAddingAndRemoving()
@@ -100,8 +98,7 @@ class RedeemBeerchipViewController: UIViewController,UITextFieldDelegate {
             guard let imageObj  = UIImage(named:"view-redeem-icon.png") else{ return  }
             cashoutBtn.setImage( imageObj  , for: .normal)
             
-            isRedeemBeerchipVCRemoving = true
-            redeemBeerchipVCAddingAndRemoving()
+          
             
             isCashoutVCAdding = true
             cashoutVCAddingAndRemoving()
@@ -126,21 +123,5 @@ class RedeemBeerchipViewController: UIViewController,UITextFieldDelegate {
         }
     }
     
-    
-    func redeemBeerchipVCAddingAndRemoving()  {
-        
-        if isRedeemBeerchipVCAdding {
-            self.addChildViewController(redeemBeerchipVC)
-            redeemBeerchipVC.view.frame = CGRect(x: 0, y: 160, width: UIScreen.main.bounds.width, height:  (UIScreen.main.bounds.height-160))
-            self.view.addSubview(redeemBeerchipVC.view)
-            redeemBeerchipVC.didMove(toParentViewController: self)
-            isRedeemBeerchipVCAdding = false
-        }
-        if isRedeemBeerchipVCRemoving{
-            redeemBeerchipVC.willMove(toParentViewController: nil)
-            redeemBeerchipVC.view.removeFromSuperview()
-            redeemBeerchipVC.removeFromParentViewController()
-            isRedeemBeerchipVCRemoving = false
-        }
-    }
+
 }

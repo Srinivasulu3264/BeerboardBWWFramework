@@ -79,6 +79,9 @@ public class WelcomeViewController: UIViewController {
         redeemBtn.layer.cornerRadius = 8.0
         locationIndicatorBtn.layer.cornerRadius = 8.0
         
+        alphaView.isHidden = true
+        locationTableContainerView.isHidden = true
+        
         
         let beerboardBWWStoryboard = UIStoryboard(name: "BeerboardBWWFrameworkStoryboard", bundle: Bundle(for: BeerboardBWWViewController.self))
         
@@ -104,7 +107,9 @@ public class WelcomeViewController: UIViewController {
     
     
     @IBAction func cashOutBtnAction(_ sender: Any) {
-        
+       
+        alphaView.isHidden = false
+        locationTableContainerView.isHidden = false
     }
     
     
