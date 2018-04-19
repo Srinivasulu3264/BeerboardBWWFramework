@@ -43,7 +43,7 @@ public class WelcomeViewController: UIViewController {
     var beerchipTableVC = BeerChipTableViewController()
     var cashOutVC = UIViewController()
     var redeemBeerchipVC = RedeemBeerchipViewController()
-  
+    
     
     var isTableClicked = false
     
@@ -55,7 +55,6 @@ public class WelcomeViewController: UIViewController {
     
     var isRedeemBeerchipVCAdding = false
     var isRedeemBeerchipVCRemoving = false
-
     
     var isRedeemBeerchipLocation = false
     var usedefaults = UserDefaults.standard
@@ -73,8 +72,7 @@ public class WelcomeViewController: UIViewController {
         abvValueArr = ["5.8%","6%","5%"]
         locationArr = ["Cahokia","Canton","Camillus","Columbus","Dalton","Douglas","East Hartford","East Haven","Enfield","Fairfield","Farmington","Greenwich","Groton"]
         
-        alphaView.isHidden = true
-        locationTableContainerView.isHidden = true
+        
         cashOutBtnView.backgroundColor = UIColor.black
         
         cashOutBtn.layer.cornerRadius = 8.0
@@ -90,9 +88,7 @@ public class WelcomeViewController: UIViewController {
         
         redeemBeerchipVC =  beerboardBWWStoryboard.instantiateViewController(withIdentifier: "RedeemBeerchipViewController") as! RedeemBeerchipViewController
         
-        
-        beerchipTableVC.beerchipTableDelegate = self
-        redeemBeerchipVC.redeemBeerchipVCDelegate = self 
+        redeemBeerchipVC.redeemBeerchipVCDelegate = self
     }
     
     override public func viewWillAppear(_ animated: Bool) {
@@ -120,16 +116,16 @@ public class WelcomeViewController: UIViewController {
             currentBalancedisplayLbl.text = "$7.50"
             myBalanceDisplayLable.text = "$7.50"
             cashOutBtnView.isHidden = false
-            cashOutBtnView.backgroundColor = UIColor.init(red: 59.0/255.0, green: 26.0/255.0, blue: 14.0/255.0, alpha: 1.0)
+            cashOutBtnView.backgroundColor = UIColor.black
             isBeerchipTableVCRemoving = true
             beerChipTableVCAddingAndRemoving()
             
             
         }else{
-             print("called segment 1")
+            print("called segment 1")
             
-            currentBalancedisplayLbl.text = "$15.00"
-            myBalanceDisplayLable.text = "$15.00"
+            currentBalancedisplayLbl.text = "$20.50"
+            myBalanceDisplayLable.text = "$20.50"
             cashOutBtnView.isHidden = true
             
             isBeerchipTableVCAdding = true
@@ -141,6 +137,9 @@ public class WelcomeViewController: UIViewController {
     
     @IBAction func redeemButtonAction(_ sender: Any) {
         
+        
+        performSegue(withIdentifier: "RedeemBeerchipSegue", sender: self)
+    /*
         if redeemBtn.currentTitle == "REDEEM"
         {
             isBeerchipTableVCRemoving = true
@@ -154,21 +153,21 @@ public class WelcomeViewController: UIViewController {
             
             redeemBtn.setImage(nil, for: .normal)
             redeemBtn.setTitle("CASH OUT", for: .normal)
-            currentBalancedisplayLbl.text = "$15.00"
+            currentBalancedisplayLbl.text = "$20.50"
         }
         else{
             
             redeemBtn.setTitle("REDEEM", for: .normal)
             guard let imageObj  = UIImage(named:"view-redeem-icon.png") else{ return  }
             redeemBtn.setImage( imageObj  , for: .normal)
-    
+            
             isRedeemBeerchipVCRemoving = true
             redeemBeerchipVCAddingAndRemoving()
             
             isCashoutVCAdding = true
             cashoutVCAddingAndRemoving()
         }
-
+  */
     }
     
     @IBAction func locationIndicatorBtnAction(_ sender: Any) {
@@ -181,7 +180,7 @@ public class WelcomeViewController: UIViewController {
         
         if isBeerchipTableVCAdding {
             self.addChildViewController(beerchipTableVC)
-            beerchipTableVC.view.frame = CGRect(x: 0, y: 177, width:  UIScreen.main.bounds.width, height: (UIScreen.main.bounds.height-257))
+            beerchipTableVC.view.frame = CGRect(x: 0, y: 232, width:  UIScreen.main.bounds.width, height: (UIScreen.main.bounds.height-257))
             self.view.addSubview(beerchipTableVC.view)
             beerchipTableVC.didMove(toParentViewController: self)
             isBeerchipTableVCAdding = false
@@ -199,7 +198,7 @@ public class WelcomeViewController: UIViewController {
         
         if isCashoutVCAdding {
             self.addChildViewController(cashOutVC)
-            cashOutVC.view.frame = CGRect(x: 0, y: 120, width:  UIScreen.main.bounds.width, height: (UIScreen.main.bounds.height-180))
+            cashOutVC.view.frame = CGRect(x: 0, y: 176, width:  UIScreen.main.bounds.width, height: (UIScreen.main.bounds.height-180))
             self.view.addSubview(cashOutVC.view)
             cashOutVC.didMove(toParentViewController: self)
             isCashoutVCAdding = false
@@ -217,7 +216,7 @@ public class WelcomeViewController: UIViewController {
         
         if isRedeemBeerchipVCAdding {
             self.addChildViewController(redeemBeerchipVC)
-            redeemBeerchipVC.view.frame = CGRect(x: 0, y: 120, width: UIScreen.main.bounds.width, height:  (UIScreen.main.bounds.height-180))
+            redeemBeerchipVC.view.frame = CGRect(x: 0, y: 176, width: UIScreen.main.bounds.width, height:  (UIScreen.main.bounds.height-180))
             self.view.addSubview(redeemBeerchipVC.view)
             redeemBeerchipVC.didMove(toParentViewController: self)
             isRedeemBeerchipVCAdding = false
@@ -228,27 +227,6 @@ public class WelcomeViewController: UIViewController {
             redeemBeerchipVC.removeFromParentViewController()
             isRedeemBeerchipVCRemoving = false
         }
-    }
-    
-}
-
-
-extension WelcomeViewController:beerchipTableVCProtocol{
-    
-    func addBeerinfoVCFromBeerchipTableVC() {
-      
-        setBeerMenubtnSelected()
-        isTableClicked = true
-    }
-    
-    func setBeerMenubtnSelected()  {
-       
-        currentBalancedisplayLbl.text = "$7.50"
-        myBalanceDisplayLable.text = "$7.50"
-        cashOutBtnView.isHidden = false
-        cashOutBtnView.backgroundColor = UIColor.init(red: 59.0/255.0, green: 26.0/255.0, blue: 14.0/255.0, alpha: 1.0)
-        isBeerchipTableVCRemoving = true
-        beerChipTableVCAddingAndRemoving()
     }
 }
 

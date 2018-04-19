@@ -12,15 +12,24 @@ import UIKit
 protocol redeemBeerchipVCProtocol {
     
     func displayLocationTable()
-    
 }
 
 
 class RedeemBeerchipViewController: UIViewController,UITextFieldDelegate {
 
+    @IBOutlet weak var cashoutBtn: UIButton!
     
     @IBOutlet weak var receiptIDTxtfield: UITextField!
     @IBOutlet weak var redeemBeerchipVCLocationIndicatorBtn: UIButton!
+    
+    var isCashoutVCAdding = false
+    var isCashoutVCRemoving = false
+    
+    var isRedeemBeerchipVCAdding = false
+    var isRedeemBeerchipVCRemoving = false
+    
+    var cashOutVC = UIViewController()
+    var redeemBeerchipVC = RedeemBeerchipViewController()
     
     var redeemBeerchipVCDelegate : redeemBeerchipVCProtocol?
     
@@ -32,6 +41,11 @@ class RedeemBeerchipViewController: UIViewController,UITextFieldDelegate {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard(_:)))
         view.addGestureRecognizer(tap)
         receiptIDTxtfield.delegate = self
+        
+          let beerboardBWWStoryboard = UIStoryboard(name: "BeerboardBWWFrameworkStoryboard", bundle: Bundle(for: BeerboardBWWViewController.self))
+        cashOutVC =  beerboardBWWStoryboard.instantiateViewController(withIdentifier: "CashOutViewController") as! CashOutViewController
+        
+        redeemBeerchipVC =  beerboardBWWStoryboard.instantiateViewController(withIdentifier: "RedeemBeerchipViewController") as! RedeemBeerchipViewController
         
         // Do any additional setup after loading the view.
     }
@@ -52,9 +66,9 @@ class RedeemBeerchipViewController: UIViewController,UITextFieldDelegate {
         var userdefaultsLocation = UserDefaults.standard.string(forKey: "location")
         
         if userdefaultsLocation == nil {
-            userdefaultsLocation = "MANHATTAN, NY"
+            userdefaultsLocation = "CAMILLUS"
         }
-        
+      
         redeemBeerchipVCLocationIndicatorBtn.setTitle(userdefaultsLocation, for: .normal)
         
     }
@@ -65,14 +79,68 @@ class RedeemBeerchipViewController: UIViewController,UITextFieldDelegate {
         
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+   
+    @IBAction func cashoutBtnAction(_ sender: Any) {
+        
+        if cashoutBtn.currentTitle == "REDEEM"
+        {
+            isRedeemBeerchipVCAdding = true
+            redeemBeerchipVCAddingAndRemoving()
+            
+            isCashoutVCRemoving = true
+            cashoutVCAddingAndRemoving()
+            
+            cashoutBtn.setImage(nil, for: .normal)
+            cashoutBtn.setTitle("CASH OUT", for: .normal)
+          
+        }
+        else{
+            
+            cashoutBtn.setTitle("REDEEM", for: .normal)
+            guard let imageObj  = UIImage(named:"view-redeem-icon.png") else{ return  }
+            cashoutBtn.setImage( imageObj  , for: .normal)
+            
+            isRedeemBeerchipVCRemoving = true
+            redeemBeerchipVCAddingAndRemoving()
+            
+            isCashoutVCAdding = true
+            cashoutVCAddingAndRemoving()
+        }
+}
+    
+    
+    func cashoutVCAddingAndRemoving()  {
+        
+        if isCashoutVCAdding {
+            self.addChildViewController(cashOutVC)
+            cashOutVC.view.frame = CGRect(x: 0, y: 160, width:  UIScreen.main.bounds.width, height: (UIScreen.main.bounds.height-160))
+            self.view.addSubview(cashOutVC.view)
+            cashOutVC.didMove(toParentViewController: self)
+            isCashoutVCAdding = false
+        }
+        if isCashoutVCRemoving{
+            cashOutVC.willMove(toParentViewController: nil)
+            cashOutVC.view.removeFromSuperview()
+            cashOutVC.removeFromParentViewController()
+            isCashoutVCRemoving = false
+        }
     }
-    */
-
+    
+    
+    func redeemBeerchipVCAddingAndRemoving()  {
+        
+        if isRedeemBeerchipVCAdding {
+            self.addChildViewController(redeemBeerchipVC)
+            redeemBeerchipVC.view.frame = CGRect(x: 0, y: 160, width: UIScreen.main.bounds.width, height:  (UIScreen.main.bounds.height-160))
+            self.view.addSubview(redeemBeerchipVC.view)
+            redeemBeerchipVC.didMove(toParentViewController: self)
+            isRedeemBeerchipVCAdding = false
+        }
+        if isRedeemBeerchipVCRemoving{
+            redeemBeerchipVC.willMove(toParentViewController: nil)
+            redeemBeerchipVC.view.removeFromSuperview()
+            redeemBeerchipVC.removeFromParentViewController()
+            isRedeemBeerchipVCRemoving = false
+        }
+    }
 }
