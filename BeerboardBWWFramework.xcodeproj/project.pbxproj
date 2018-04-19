@@ -10,6 +10,10 @@
 		89379AAD208616560001CD15 /* RedeemViewBeerchipTableTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89379AAB208616560001CD15 /* RedeemViewBeerchipTableTitleTableViewCell.swift */; };
 		89379AAE208616560001CD15 /* RedeemviewBeerchipTableSubTitlesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89379AAC208616560001CD15 /* RedeemviewBeerchipTableSubTitlesTableViewCell.swift */; };
 		894538FC20872A65007021F3 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894538FB20872A65007021F3 /* LocationTableViewCell.swift */; };
+		8947FE2820885C4800D2B435 /* BeerchipTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8947FE2420885C4800D2B435 /* BeerchipTableViewCell.swift */; };
+		8947FE2920885C4800D2B435 /* CashOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8947FE2520885C4800D2B435 /* CashOutViewController.swift */; };
+		8947FE2A20885C4800D2B435 /* RedeemBeerchipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8947FE2620885C4800D2B435 /* RedeemBeerchipViewController.swift */; };
+		8947FE2B20885C4800D2B435 /* BeerChipTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8947FE2720885C4800D2B435 /* BeerChipTableViewController.swift */; };
 		894BB2B2207C83B100E65595 /* BeerboardBWWFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894BB2A8207C83B000E65595 /* BeerboardBWWFramework.framework */; };
 		894BB2B7207C83B100E65595 /* BeerboardBWWFrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894BB2B6207C83B100E65595 /* BeerboardBWWFrameworkTests.swift */; };
 		894BB2B9207C83B100E65595 /* BeerboardBWWFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 894BB2AB207C83B000E65595 /* BeerboardBWWFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -33,6 +37,10 @@
 		89379AAB208616560001CD15 /* RedeemViewBeerchipTableTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemViewBeerchipTableTitleTableViewCell.swift; sourceTree = "<group>"; };
 		89379AAC208616560001CD15 /* RedeemviewBeerchipTableSubTitlesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemviewBeerchipTableSubTitlesTableViewCell.swift; sourceTree = "<group>"; };
 		894538FB20872A65007021F3 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
+		8947FE2420885C4800D2B435 /* BeerchipTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerchipTableViewCell.swift; sourceTree = "<group>"; };
+		8947FE2520885C4800D2B435 /* CashOutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashOutViewController.swift; sourceTree = "<group>"; };
+		8947FE2620885C4800D2B435 /* RedeemBeerchipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemBeerchipViewController.swift; sourceTree = "<group>"; };
+		8947FE2720885C4800D2B435 /* BeerChipTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerChipTableViewController.swift; sourceTree = "<group>"; };
 		894BB2A8207C83B000E65595 /* BeerboardBWWFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BeerboardBWWFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		894BB2AB207C83B000E65595 /* BeerboardBWWFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BeerboardBWWFramework.h; sourceTree = "<group>"; };
 		894BB2AC207C83B000E65595 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -91,6 +99,10 @@
 				894538FB20872A65007021F3 /* LocationTableViewCell.swift */,
 				89379AAC208616560001CD15 /* RedeemviewBeerchipTableSubTitlesTableViewCell.swift */,
 				89379AAB208616560001CD15 /* RedeemViewBeerchipTableTitleTableViewCell.swift */,
+				8947FE2420885C4800D2B435 /* BeerchipTableViewCell.swift */,
+				8947FE2720885C4800D2B435 /* BeerChipTableViewController.swift */,
+				8947FE2520885C4800D2B435 /* CashOutViewController.swift */,
+				8947FE2620885C4800D2B435 /* RedeemBeerchipViewController.swift */,
 				894BB2C2207C84B000E65595 /* BeerboardBWWFrameworkStoryboard.storyboard */,
 				894BB2C8207C8C6600E65595 /* BWWAssets.xcassets */,
 				894BB2AC207C83B000E65595 /* Info.plist */,
@@ -218,9 +230,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8947FE2B20885C4800D2B435 /* BeerChipTableViewController.swift in Sources */,
+				8947FE2A20885C4800D2B435 /* RedeemBeerchipViewController.swift in Sources */,
 				89379AAD208616560001CD15 /* RedeemViewBeerchipTableTitleTableViewCell.swift in Sources */,
 				894538FC20872A65007021F3 /* LocationTableViewCell.swift in Sources */,
 				894BB2C5207C879000E65595 /* BeerboardBWWViewController.swift in Sources */,
+				8947FE2920885C4800D2B435 /* CashOutViewController.swift in Sources */,
+				8947FE2820885C4800D2B435 /* BeerchipTableViewCell.swift in Sources */,
 				894BB2C7207C8BB800E65595 /* WelcomeViewController.swift in Sources */,
 				89379AAE208616560001CD15 /* RedeemviewBeerchipTableSubTitlesTableViewCell.swift in Sources */,
 			);
