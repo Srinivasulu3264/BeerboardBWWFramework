@@ -22,11 +22,22 @@ class RedeemBeerchipViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var receiptIDTxtfield: UITextField!
     @IBOutlet weak var redeemBeerchipVCLocationIndicatorBtn: UIButton!
     
+    @IBOutlet weak var alphaView: UIView!
+    
+    @IBOutlet weak var redeemVClocationsTable: UITableView!
+    
+    @IBOutlet weak var locationTableContainerView: UIView!
+    
     var isCashoutVCAdding = false
     var isCashoutVCRemoving = false
     
     
     var cashOutVC = CashOutViewController()
+    
+        var usedefaults = UserDefaults.standard
+    
+    var locationArr = [String]()
+    
     
     var redeemBeerchipVCDelegate : redeemBeerchipVCProtocol?
     
@@ -35,6 +46,8 @@ class RedeemBeerchipViewController: UIViewController,UITextFieldDelegate {
 
           redeemBeerchipVCLocationIndicatorBtn.layer.cornerRadius = 8.0
         
+          locationArr = ["Cahokia","Canton","Camillus","Columbus","Dalton","Douglas","East Hartford","East Haven","Enfield","Fairfield","Farmington","Greenwich","Groton"]
+        
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard(_:)))
         view.addGestureRecognizer(tap)
         receiptIDTxtfield.delegate = self
@@ -42,8 +55,21 @@ class RedeemBeerchipViewController: UIViewController,UITextFieldDelegate {
         let beerboardBWWStoryboard = UIStoryboard(name: "BeerboardBWWFrameworkStoryboard", bundle: Bundle(for: CashOutViewController.self))
         cashOutVC =  beerboardBWWStoryboard.instantiateViewController(withIdentifier: "CashOutViewController") as! CashOutViewController
         
+        let index = NSIndexPath(row: 3, section: 0)
+        self.redeemVClocationsTable.selectRow(at: index as IndexPath, animated: true, scrollPosition: UITableViewScrollPosition.middle)
         
         // Do any additional setup after loading the view.
+    }
+    
+    override public func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        var userdefaultsLocation = UserDefaults.standard.string(forKey: "location")
+        
+        if userdefaultsLocation == nil {
+            userdefaultsLocation = "CAMILLUS"
+        }
+        redeemBeerchipVCLocationIndicatorBtn.setTitle(userdefaultsLocation, for: .normal)
     }
     
     
@@ -56,17 +82,7 @@ class RedeemBeerchipViewController: UIViewController,UITextFieldDelegate {
         return false
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        var userdefaultsLocation = UserDefaults.standard.string(forKey: "location")
-        
-        if userdefaultsLocation == nil {
-            userdefaultsLocation = "CAMILLUS"
-        }
-      
-        redeemBeerchipVCLocationIndicatorBtn.setTitle(userdefaultsLocation, for: .normal)
-    }
+   
     
     @IBAction func redeemBeerchipVCLocationIndicationBtnAction(_ sender: Any) {
         
@@ -109,4 +125,48 @@ class RedeemBeerchipViewController: UIViewController,UITextFieldDelegate {
             isCashoutVCRemoving = false
         }
     }
+}
+
+
+extension RedeemBeerchipViewController:UITableViewDelegate,UITableViewDataSource{
+    
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+            return locationArr.count
+
+    }
+    
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+
+            if indexPath.row == 0 {
+                let   cell  = tableView.dequeueReusableCell(withIdentifier: "locationTitleCell") as! LocationTableViewCell
+                let label = cell.viewWithTag(99) as! UILabel
+                label.text = "LOCATIONS"
+                label.font = UIFont .systemFont(ofSize: 25.0)
+                return cell
+            }
+            else{
+                
+                let   cell  = tableView.dequeueReusableCell(withIdentifier: "locationCell") as! LocationTableViewCell
+                cell.locationNameLbl.text = locationArr[indexPath.row-1]
+                let backgroundView = UIView()
+                backgroundView.backgroundColor = #colorLiteral(red: 1, green: 0.8, blue: 0, alpha: 1)
+                cell.selectedBackgroundView = backgroundView
+                return cell
+            }
+        
+    }
+    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+             let locationName = locationArr[indexPath.row]
+            redeemBeerchipVCLocationIndicatorBtn.setTitle(locationName, for: .normal)
+            alphaView.isHidden = true
+            locationTableContainerView.isHidden = true            
+            usedefaults.set(locationName, forKey: "location")
+
+        
+        }
+    
 }

@@ -80,7 +80,7 @@ public class WelcomeViewController: UIViewController {
         
         beerchipTableVC =  beerboardBWWStoryboard.instantiateViewController(withIdentifier: "BeerChipTableViewController") as! BeerChipTableViewController
         
-        let index = NSIndexPath(row: 2, section: 0)
+        let index = NSIndexPath(row: 3, section: 0)
         self.locationTableView.selectRow(at: index as IndexPath, animated: true, scrollPosition: UITableViewScrollPosition.middle)
         
     }
@@ -195,12 +195,24 @@ extension WelcomeViewController:UITableViewDelegate,UITableViewDataSource{
             }
         }
         else{
+            
+            if indexPath.row == 0 {
+                let   cell  = tableView.dequeueReusableCell(withIdentifier: "locationTitleCell") as! LocationTableViewCell
+                let label = cell.viewWithTag(99) as! UILabel
+                label.text = "LOCATIONS"
+                label.font = UIFont .systemFont(ofSize: 25.0)
+                return cell
+            }
+            else{
+            
+            
             let   cell  = tableView.dequeueReusableCell(withIdentifier: "locationCell") as! LocationTableViewCell
-            cell.locationNameLbl.text = locationArr[indexPath.row]
+            cell.locationNameLbl.text = locationArr[indexPath.row-1]
             let backgroundView = UIView()
             backgroundView.backgroundColor = #colorLiteral(red: 1, green: 0.8, blue: 0, alpha: 1)
             cell.selectedBackgroundView = backgroundView
             return cell
+            }
         }
     }
     
