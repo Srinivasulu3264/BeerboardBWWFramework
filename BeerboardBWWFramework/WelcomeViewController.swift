@@ -66,7 +66,6 @@ public class WelcomeViewController: UIViewController {
         abvValueArr = ["5.8%","6%","5%"]
         locationArr = ["Cahokia","Canton","Camillus","Columbus","Dalton","Douglas","East Hartford","East Haven","Enfield","Fairfield","Farmington","Greenwich","Groton"]
         
-        
         cashOutBtnView.backgroundColor = UIColor.black
         
         cashOutBtn.layer.cornerRadius = 8.0
@@ -80,6 +79,9 @@ public class WelcomeViewController: UIViewController {
         let beerboardBWWStoryboard = UIStoryboard(name: "BeerboardBWWFrameworkStoryboard", bundle: Bundle(for: BeerboardBWWViewController.self))
         
         beerchipTableVC =  beerboardBWWStoryboard.instantiateViewController(withIdentifier: "BeerChipTableViewController") as! BeerChipTableViewController
+        
+        let index = NSIndexPath(row: 2, section: 0)
+        self.locationTableView.selectRow(at: index as IndexPath, animated: true, scrollPosition: UITableViewScrollPosition.middle)
         
     }
     
@@ -196,7 +198,7 @@ extension WelcomeViewController:UITableViewDelegate,UITableViewDataSource{
             let   cell  = tableView.dequeueReusableCell(withIdentifier: "locationCell") as! LocationTableViewCell
             cell.locationNameLbl.text = locationArr[indexPath.row]
             let backgroundView = UIView()
-            backgroundView.backgroundColor = UIColor.init(red: 172.0/255.0, green: 26.0/255.0, blue: 46.0/255.0, alpha: 1.0)
+            backgroundView.backgroundColor = #colorLiteral(red: 1, green: 0.8, blue: 0, alpha: 1)
             cell.selectedBackgroundView = backgroundView
             return cell
         }
