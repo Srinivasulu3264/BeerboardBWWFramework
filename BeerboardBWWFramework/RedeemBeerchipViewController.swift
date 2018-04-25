@@ -33,10 +33,9 @@ class RedeemBeerchipViewController: UIViewController,UITextFieldDelegate {
     var isCashoutVCAdding = false
     var isCashoutVCRemoving = false
     
-    
+    var activeField:UIControl = UIControl()
     var cashOutVC = CashOutViewController()
-    
-        var usedefaults = UserDefaults.standard
+    var usedefaults = UserDefaults.standard
     
     var locationArr = [String]()
     
@@ -48,6 +47,9 @@ class RedeemBeerchipViewController: UIViewController,UITextFieldDelegate {
 
         redeemBeerchipVCLocationIndicatorBtn.layer.cornerRadius = 8.0
         
+        redeemVClocationsTable.delegate = self
+        redeemVClocationsTable.dataSource = self
+        
         locationArr = ["Cahokia","Canton","Camillus","Columbus","Dalton","Douglas","East Hartford","East Haven","Enfield","Fairfield","Farmington","Greenwich","Groton"]
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard(_:)))
@@ -56,9 +58,6 @@ class RedeemBeerchipViewController: UIViewController,UITextFieldDelegate {
         
         let beerboardBWWStoryboard = UIStoryboard(name: "BeerboardBWWFrameworkStoryboard", bundle: Bundle(for: CashOutViewController.self))
         cashOutVC =  beerboardBWWStoryboard.instantiateViewController(withIdentifier: "CashOutViewController") as! CashOutViewController
-        
-        let index = NSIndexPath(row: 3, section: 0)
-        self.redeemVClocationsTable.selectRow(at: index as IndexPath, animated: true, scrollPosition: UITableViewScrollPosition.middle)
         
         alphaView.isHidden = true
         locationTableContainerView.isHidden = true
@@ -77,8 +76,8 @@ class RedeemBeerchipViewController: UIViewController,UITextFieldDelegate {
         self.scrollView.contentInset = contentInsets;
         var aRect = self.view.frame as CGRect;
         aRect.size.height -= kbSize.height;
-        if !aRect.contains(contentView.frame.origin){
-            self.scrollView .scrollRectToVisible(contentView.frame, animated: true);
+        if !aRect.contains(activeField.frame.origin){
+            self.scrollView.scrollRectToVisible(activeField.frame, animated: true);
         }
         
         if self.view.frame.origin.y == 0{
@@ -93,7 +92,7 @@ class RedeemBeerchipViewController: UIViewController,UITextFieldDelegate {
         self.scrollView.contentInset = contentInsets;
         self.scrollView.scrollIndicatorInsets = contentInsets;
         if self.view.frame.origin.y != 0{
-            self.view.frame.origin.y = 0
+            self.view.frame.origin.y = 64
         }
     }
     
