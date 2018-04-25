@@ -18,12 +18,13 @@ class BeerChipTableViewController: UIViewController {
   
 
     @IBOutlet weak var beerchipTable: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         beerchipTable.tableFooterView = UIView()
-        beerNamesArr = ["FOUNDERS ALL DAY IPA" , "HEINEKEN" ,"LAGUNITAS IPA"]
-        beerCostArr = ["$11.00","$2.00","$2.00"]
+        beerNamesArr = ["FOUNDERS ALL DAY IPA" , "HEINEKEN" ,"LAGUNITAS IPA","FOUNDERS ALL DAY IPA" , "HEINEKEN" ,"LAGUNITAS IPA"]
+        beerCostArr = ["$11.00","$2.00","$2.00","$1.50","$2.00","$2.00"]
         beerSubtitlsArr = ["American IPA/ Founders Brewing / Grand Rapids,MI","Euro Lager/Heineken/Amsterdam ,NLD","American IPA /Lagunitas brewing/Petaluma CA"]
         // Do any additional setup after loading the view.
     }

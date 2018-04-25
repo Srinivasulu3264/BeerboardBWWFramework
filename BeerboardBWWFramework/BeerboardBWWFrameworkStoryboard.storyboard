@@ -261,6 +261,11 @@
                                                             <action selector="beerMenuSegmentedControlAction:" destination="wJk-BO-638" eventType="valueChanged" id="mLo-cz-SdA"/>
                                                         </connections>
                                                     </segmentedControl>
+                                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OMT-mT-Gk8">
+                                                        <rect key="frame" x="59" y="-42" width="240" height="128"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -485,7 +490,7 @@
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                         <state key="normal" title="CASH OUT">
-                                                            <color key="titleColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="cashOutBtnAction:" destination="wJk-BO-638" eventType="touchUpInside" id="ETE-7S-W6g"/>
@@ -495,7 +500,7 @@
                                                         <rect key="frame" x="235" y="15.5" width="130" height="50"/>
                                                     </view>
                                                 </subviews>
-                                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="Zj8-eP-Z4W" firstAttribute="leading" secondItem="g8d-dI-Tae" secondAttribute="leading" constant="5" id="HnX-N4-5YV"/>
                                                     <constraint firstItem="Zj8-eP-Z4W" firstAttribute="top" secondItem="g8d-dI-Tae" secondAttribute="top" constant="5" id="L5r-ov-pHY"/>
@@ -611,6 +616,7 @@
                         <outlet property="beerMenuTableView" destination="mae-dE-ii8" id="idh-wj-KHk"/>
                         <outlet property="cashOutBtn" destination="Zj8-eP-Z4W" id="sbf-lf-6bp"/>
                         <outlet property="cashOutBtnView" destination="g8d-dI-Tae" id="CRV-N8-kZD"/>
+                        <outlet property="contentView" destination="WJn-mf-fUN" id="Bjo-rm-RLe"/>
                         <outlet property="currentBalancedisplayLbl" destination="ML7-Aj-pux" id="zH5-hk-6iK"/>
                         <outlet property="locationIndicatorBtn" destination="wst-fm-04t" id="j7G-Hm-jdy"/>
                         <outlet property="locationTableContainerView" destination="mtp-kO-E4t" id="3a2-Yj-RfH"/>
@@ -933,7 +939,7 @@
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                         <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="10" maxY="0.0"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="15" maxY="0.0"/>
-                                        <state key="normal" title="CASH OUT" image="view-redeem-icon">
+                                        <state key="normal" title="CASH OUT">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -1038,16 +1044,19 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="SELECT LOCATION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8II-nV-BJx">
-                                        <rect key="frame" x="4" y="68" width="172" height="23"/>
+                                        <rect key="frame" x="4" y="58" width="172" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="7aH-J8-m94"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="395-HA-2Ss">
-                                        <rect key="frame" x="217" y="68" width="150" height="23"/>
+                                        <rect key="frame" x="227" y="58" width="140" height="30"/>
                                         <color key="backgroundColor" name="systemYellowColor" catalog="System" colorSpace="catalog"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="150" id="VE6-ZB-LT8"/>
+                                            <constraint firstAttribute="width" constant="140" id="VE6-ZB-LT8"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                                         <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -1060,13 +1069,13 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RECEIPT ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u5Y-Qx-W7j">
-                                        <rect key="frame" x="4" y="106" width="107" height="21"/>
+                                        <rect key="frame" x="4" y="98" width="107" height="23"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Receipt ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L33-9s-YpF">
-                                        <rect key="frame" x="4" y="135" width="367" height="40"/>
+                                        <rect key="frame" x="4" y="129" width="367" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="B1r-nA-5QF"/>
                                         </constraints>
@@ -1075,13 +1084,13 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unsure where these items are?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="asE-7Z-f8O">
-                                        <rect key="frame" x="4" y="185" width="200" height="17"/>
+                                        <rect key="frame" x="4" y="179" width="200" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6HU-Pv-rdg">
-                                        <rect key="frame" x="207" y="185" width="166" height="17"/>
+                                        <rect key="frame" x="207" y="179" width="166" height="17"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                         <state key="normal" title="View Receipt Example">
                                             <color key="titleColor" red="0.71758355034722221" green="0.57406684027777777" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1101,8 +1110,11 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sFz-cv-gPR">
-                                        <rect key="frame" x="8" y="222" width="359" height="34"/>
+                                        <rect key="frame" x="8" y="216" width="359" height="40"/>
                                         <color key="backgroundColor" name="systemYellowColor" catalog="System" colorSpace="catalog"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="gRM-tH-VVH"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="SUBMIT">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1114,12 +1126,12 @@
                                     <constraint firstItem="8II-nV-BJx" firstAttribute="leading" secondItem="Ov2-cF-QrU" secondAttribute="leading" constant="4" id="11d-9a-OuU"/>
                                     <constraint firstItem="jx5-6c-jdG" firstAttribute="leading" secondItem="Ov2-cF-QrU" secondAttribute="leading" constant="8" id="15A-G6-SXC"/>
                                     <constraint firstAttribute="bottom" secondItem="bWD-NW-s6Z" secondAttribute="bottom" constant="25" id="1NW-ty-3Js"/>
-                                    <constraint firstItem="8II-nV-BJx" firstAttribute="top" secondItem="jx5-6c-jdG" secondAttribute="bottom" constant="20" id="5D5-z8-9iz"/>
+                                    <constraint firstItem="8II-nV-BJx" firstAttribute="top" secondItem="jx5-6c-jdG" secondAttribute="bottom" constant="10" id="5D5-z8-9iz"/>
                                     <constraint firstAttribute="trailing" secondItem="395-HA-2Ss" secondAttribute="trailing" constant="8" id="A5o-dY-hNq"/>
                                     <constraint firstItem="bWD-NW-s6Z" firstAttribute="top" secondItem="sFz-cv-gPR" secondAttribute="bottom" constant="61" id="CAW-jN-gbc"/>
                                     <constraint firstAttribute="trailing" secondItem="jx5-6c-jdG" secondAttribute="trailing" constant="8" id="CMd-cf-qLd"/>
                                     <constraint firstItem="bWD-NW-s6Z" firstAttribute="bottom" secondItem="rfK-QM-Fwh" secondAttribute="bottom" id="ECz-ob-p0V"/>
-                                    <constraint firstItem="u5Y-Qx-W7j" firstAttribute="top" secondItem="8II-nV-BJx" secondAttribute="bottom" constant="15" id="HIK-OD-WRR"/>
+                                    <constraint firstItem="u5Y-Qx-W7j" firstAttribute="top" secondItem="8II-nV-BJx" secondAttribute="bottom" constant="10" id="HIK-OD-WRR"/>
                                     <constraint firstItem="asE-7Z-f8O" firstAttribute="leading" secondItem="Ov2-cF-QrU" secondAttribute="leading" constant="4" id="Khq-bT-Bys"/>
                                     <constraint firstAttribute="trailing" secondItem="6HU-Pv-rdg" secondAttribute="trailing" constant="2" id="Lv7-1b-s9X"/>
                                     <constraint firstItem="asE-7Z-f8O" firstAttribute="top" secondItem="L33-9s-YpF" secondAttribute="bottom" constant="10" id="NJl-oX-8cT"/>

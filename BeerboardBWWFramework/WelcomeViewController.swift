@@ -11,6 +11,7 @@ import UIKit
 public class WelcomeViewController: UIViewController {
     
        
+    @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var beerMenuTableView: UITableView!
     
     @IBOutlet weak var currentBalancedisplayLbl: UILabel!
@@ -41,8 +42,6 @@ public class WelcomeViewController: UIViewController {
     var beerMenuImagesArr = [String]()
     
     var beerchipTableVC = BeerChipTableViewController()
-    var cashOutVC = UIViewController()
-    var redeemBeerchipVC = RedeemBeerchipViewController()
     
     
     var isTableClicked = false
@@ -50,18 +49,13 @@ public class WelcomeViewController: UIViewController {
     var isBeerchipTableVCAdding = false
     var isBeerchipTableVCRemoving = false
     
-    var isCashoutVCAdding = false
-    var isCashoutVCRemoving = false
-    
-    var isRedeemBeerchipVCAdding = false
-    var isRedeemBeerchipVCRemoving = false
-    
     var isRedeemBeerchipLocation = false
     var usedefaults = UserDefaults.standard
     
     override public func viewDidLoad() {
         super.viewDidLoad()
 
+        self.title = "BEERCHIPS"
         beerMenuTableView.estimatedRowHeight = 100.0
         beerMenuTableView.rowHeight = UITableViewAutomaticDimension
         beerMenuTableView.tableFooterView = UIView()
@@ -87,11 +81,6 @@ public class WelcomeViewController: UIViewController {
         
         beerchipTableVC =  beerboardBWWStoryboard.instantiateViewController(withIdentifier: "BeerChipTableViewController") as! BeerChipTableViewController
         
-        cashOutVC =  beerboardBWWStoryboard.instantiateViewController(withIdentifier: "CashOutViewController") as! CashOutViewController
-        
-        redeemBeerchipVC =  beerboardBWWStoryboard.instantiateViewController(withIdentifier: "RedeemBeerchipViewController") as! RedeemBeerchipViewController
-        
-        redeemBeerchipVC.redeemBeerchipVCDelegate = self
     }
     
     override public func viewWillAppear(_ animated: Bool) {
@@ -124,8 +113,6 @@ public class WelcomeViewController: UIViewController {
             cashOutBtnView.backgroundColor = UIColor.black
             isBeerchipTableVCRemoving = true
             beerChipTableVCAddingAndRemoving()
-            
-            
         }else{
             print("called segment 1")
             
@@ -142,37 +129,8 @@ public class WelcomeViewController: UIViewController {
     
     @IBAction func redeemButtonAction(_ sender: Any) {
         
-        
         performSegue(withIdentifier: "RedeemBeerchipSegue", sender: self)
-    /*
-        if redeemBtn.currentTitle == "REDEEM"
-        {
-            isBeerchipTableVCRemoving = true
-            beerChipTableVCAddingAndRemoving()
-            
-            isRedeemBeerchipVCAdding = true
-            redeemBeerchipVCAddingAndRemoving()
-            
-            isCashoutVCRemoving = true
-            cashoutVCAddingAndRemoving()
-            
-            redeemBtn.setImage(nil, for: .normal)
-            redeemBtn.setTitle("CASH OUT", for: .normal)
-            currentBalancedisplayLbl.text = "$20.50"
-        }
-        else{
-            
-            redeemBtn.setTitle("REDEEM", for: .normal)
-            guard let imageObj  = UIImage(named:"view-redeem-icon.png") else{ return  }
-            redeemBtn.setImage( imageObj  , for: .normal)
-            
-            isRedeemBeerchipVCRemoving = true
-            redeemBeerchipVCAddingAndRemoving()
-            
-            isCashoutVCAdding = true
-            cashoutVCAddingAndRemoving()
-        }
-  */
+
     }
     
     @IBAction func locationIndicatorBtnAction(_ sender: Any) {
@@ -186,7 +144,7 @@ public class WelcomeViewController: UIViewController {
         if isBeerchipTableVCAdding {
             self.addChildViewController(beerchipTableVC)
             beerchipTableVC.view.frame = CGRect(x: 0, y: 232, width:  UIScreen.main.bounds.width, height: (UIScreen.main.bounds.height-257))
-            self.view.addSubview(beerchipTableVC.view)
+            contentView.addSubview(beerchipTableVC.view)
             beerchipTableVC.didMove(toParentViewController: self)
             isBeerchipTableVCAdding = false
         }
@@ -197,59 +155,6 @@ public class WelcomeViewController: UIViewController {
             beerchipTableVC.removeFromParentViewController()
             isBeerchipTableVCRemoving = false
         }
-    }
-    
-    func cashoutVCAddingAndRemoving()  {
-        
-        if isCashoutVCAdding {
-            self.addChildViewController(cashOutVC)
-            cashOutVC.view.frame = CGRect(x: 0, y: 176, width:  UIScreen.main.bounds.width, height: (UIScreen.main.bounds.height-180))
-            self.view.addSubview(cashOutVC.view)
-            cashOutVC.didMove(toParentViewController: self)
-            isCashoutVCAdding = false
-        }
-        if isCashoutVCRemoving{
-            cashOutVC.willMove(toParentViewController: nil)
-            cashOutVC.view.removeFromSuperview()
-            cashOutVC.removeFromParentViewController()
-            isCashoutVCRemoving = false
-        }
-    }
-    
-    
-    func redeemBeerchipVCAddingAndRemoving()  {
-        
-        if isRedeemBeerchipVCAdding {
-            self.addChildViewController(redeemBeerchipVC)
-            redeemBeerchipVC.view.frame = CGRect(x: 0, y: 176, width: UIScreen.main.bounds.width, height:  (UIScreen.main.bounds.height-180))
-            self.view.addSubview(redeemBeerchipVC.view)
-            redeemBeerchipVC.didMove(toParentViewController: self)
-            isRedeemBeerchipVCAdding = false
-        }
-        if isRedeemBeerchipVCRemoving{
-            redeemBeerchipVC.willMove(toParentViewController: nil)
-            redeemBeerchipVC.view.removeFromSuperview()
-            redeemBeerchipVC.removeFromParentViewController()
-            isRedeemBeerchipVCRemoving = false
-        }
-    }
-}
-
-extension WelcomeViewController:redeemBeerchipVCProtocol{
-    
-    func displayLocationTable() {
-        print( " location tablecalled ")
-        alphaView.isHidden = false
-        locationTableContainerView.isHidden = false
-        isRedeemBeerchipVCRemoving = true
-        redeemBeerchipVCAddingAndRemoving()
-       
-        isCashoutVCRemoving = true
-        cashoutVCAddingAndRemoving()
-        isBeerchipTableVCRemoving = true
-        beerChipTableVCAddingAndRemoving()
-      
-        isRedeemBeerchipLocation = true
     }
 }
 
@@ -313,7 +218,6 @@ extension WelcomeViewController:UITableViewDelegate,UITableViewDataSource{
             if isRedeemBeerchipLocation{
                 UserDefaults.standard.set(locationName, forKey: "location")
                 redeemBtn.setTitle("REDEEM", for: .normal)
-
             }
             
             let cell = locationTableView.cellForRow(at: indexPath) as! LocationTableViewCell

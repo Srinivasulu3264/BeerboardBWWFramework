@@ -25,8 +25,6 @@ class RedeemBeerchipViewController: UIViewController,UITextFieldDelegate {
     var isCashoutVCAdding = false
     var isCashoutVCRemoving = false
     
-    var isRedeemBeerchipVCAdding = false
-    var isRedeemBeerchipVCRemoving = false
     
     var cashOutVC = CashOutViewController()
     
@@ -44,7 +42,6 @@ class RedeemBeerchipViewController: UIViewController,UITextFieldDelegate {
         let beerboardBWWStoryboard = UIStoryboard(name: "BeerboardBWWFrameworkStoryboard", bundle: Bundle(for: CashOutViewController.self))
         cashOutVC =  beerboardBWWStoryboard.instantiateViewController(withIdentifier: "CashOutViewController") as! CashOutViewController
         
-     //   redeemBeerchipVC =  beerboardBWWStoryboard.instantiateViewController(withIdentifier: "RedeemBeerchipViewController") as! RedeemBeerchipViewController
         
         // Do any additional setup after loading the view.
     }
@@ -69,13 +66,11 @@ class RedeemBeerchipViewController: UIViewController,UITextFieldDelegate {
         }
       
         redeemBeerchipVCLocationIndicatorBtn.setTitle(userdefaultsLocation, for: .normal)
-        
     }
     
     @IBAction func redeemBeerchipVCLocationIndicationBtnAction(_ sender: Any) {
         
         redeemBeerchipVCDelegate?.displayLocationTable()
-        
     }
     
    
@@ -83,31 +78,23 @@ class RedeemBeerchipViewController: UIViewController,UITextFieldDelegate {
         
         if cashoutBtn.currentTitle == "REDEEM"
         {
-            
-            
             isCashoutVCRemoving = true
             cashoutVCAddingAndRemoving()
-            
             cashoutBtn.setImage(nil, for: .normal)
             cashoutBtn.setTitle("CASH OUT", for: .normal)
-          
+            self.title = "REDEEM A BEERCHIP"
         }
         else{
-            
             cashoutBtn.setTitle("REDEEM", for: .normal)
             guard let imageObj  = UIImage(named:"view-redeem-icon.png") else{ return  }
             cashoutBtn.setImage( imageObj  , for: .normal)
-            
-          
-            
             isCashoutVCAdding = true
             cashoutVCAddingAndRemoving()
+            self.title = "CASH OUT"
         }
 }
     
-    
     func cashoutVCAddingAndRemoving()  {
-        
         if isCashoutVCAdding {
             self.addChildViewController(cashOutVC)
             cashOutVC.view.frame = CGRect(x: 0, y: 160, width:  UIScreen.main.bounds.width, height: (UIScreen.main.bounds.height-160))
@@ -122,6 +109,4 @@ class RedeemBeerchipViewController: UIViewController,UITextFieldDelegate {
             isCashoutVCRemoving = false
         }
     }
-    
-
 }
