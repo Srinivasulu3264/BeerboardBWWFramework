@@ -1226,6 +1226,9 @@
                                                                         <constraint firstItem="zT0-ks-uAu" firstAttribute="centerX" secondItem="vvx-2x-Ctk" secondAttribute="centerX" id="Y5j-9S-2FX"/>
                                                                     </constraints>
                                                                 </tableViewCellContentView>
+                                                                <connections>
+                                                                    <outlet property="redeemlocationTitleLabel" destination="zT0-ks-uAu" id="8GT-cu-lhh"/>
+                                                                </connections>
                                                             </tableViewCell>
                                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="locationName" rowHeight="92" id="yMC-Yp-jFA" customClass="RedeemLocationTableViewCell" customModule="BeerboardBWWFramework" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="120" width="355" height="92"/>
@@ -1248,7 +1251,7 @@
                                                                     </constraints>
                                                                 </tableViewCellContentView>
                                                                 <connections>
-                                                                    <outlet property="locationNameLbl" destination="0aj-Je-5uR" id="Pen-MI-lWM"/>
+                                                                    <outlet property="redeemLocationName" destination="0aj-Je-5uR" id="hHU-Yl-g4H"/>
                                                                 </connections>
                                                             </tableViewCell>
                                                         </prototypes>
