@@ -58,6 +58,9 @@ class RedeemBeerchipViewController: UIViewController,UITextFieldDelegate {
         let index = NSIndexPath(row: 3, section: 0)
         self.redeemVClocationsTable.selectRow(at: index as IndexPath, animated: true, scrollPosition: UITableViewScrollPosition.middle)
         
+        alphaView.isHidden = true
+        locationTableContainerView.isHidden = true
+        
         // Do any additional setup after loading the view.
     }
     
@@ -82,11 +85,12 @@ class RedeemBeerchipViewController: UIViewController,UITextFieldDelegate {
         return false
     }
 
-   
-    
     @IBAction func redeemBeerchipVCLocationIndicationBtnAction(_ sender: Any) {
         
         redeemBeerchipVCDelegate?.displayLocationTable()
+        
+        alphaView.isHidden = false
+        locationTableContainerView.isHidden = false
     }
     
    
@@ -133,14 +137,12 @@ extension RedeemBeerchipViewController:UITableViewDelegate,UITableViewDataSource
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
             return locationArr.count
-
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-
             if indexPath.row == 0 {
-                let   cell  = tableView.dequeueReusableCell(withIdentifier: "locationTitleCell") as! LocationTableViewCell
+                let   cell  = tableView.dequeueReusableCell(withIdentifier: "locationTitleCell") as! RedeemLocationTableViewCell
                 let label = cell.viewWithTag(99) as! UILabel
                 label.text = "LOCATIONS"
                 label.font = UIFont .systemFont(ofSize: 25.0)
@@ -148,8 +150,8 @@ extension RedeemBeerchipViewController:UITableViewDelegate,UITableViewDataSource
             }
             else{
                 
-                let   cell  = tableView.dequeueReusableCell(withIdentifier: "locationCell") as! LocationTableViewCell
-                cell.locationNameLbl.text = locationArr[indexPath.row-1]
+                let   cell  = tableView.dequeueReusableCell(withIdentifier: "locationCell") as! RedeemLocationTableViewCell
+                cell.redeemLocationName.text = locationArr[indexPath.row-1]
                 let backgroundView = UIView()
                 backgroundView.backgroundColor = #colorLiteral(red: 1, green: 0.8, blue: 0, alpha: 1)
                 cell.selectedBackgroundView = backgroundView
@@ -160,13 +162,11 @@ extension RedeemBeerchipViewController:UITableViewDelegate,UITableViewDataSource
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-             let locationName = locationArr[indexPath.row]
+             let locationName = locationArr[indexPath.row-1]
             redeemBeerchipVCLocationIndicatorBtn.setTitle(locationName, for: .normal)
             alphaView.isHidden = true
             locationTableContainerView.isHidden = true            
             usedefaults.set(locationName, forKey: "location")
-
-        
-        }
+   }
     
 }

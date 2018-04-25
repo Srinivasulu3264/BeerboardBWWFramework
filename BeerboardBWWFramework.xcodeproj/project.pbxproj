@@ -21,6 +21,7 @@
 		894BB2C5207C879000E65595 /* BeerboardBWWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894BB2C4207C879000E65595 /* BeerboardBWWViewController.swift */; };
 		894BB2C7207C8BB800E65595 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894BB2C6207C8BB800E65595 /* WelcomeViewController.swift */; };
 		894BB2C9207C8C6600E65595 /* BWWAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 894BB2C8207C8C6600E65595 /* BWWAssets.xcassets */; };
+		899CED2D2090735600E5DB46 /* RedeemLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899CED2C2090735600E5DB46 /* RedeemLocationTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		894BB2C4207C879000E65595 /* BeerboardBWWViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerboardBWWViewController.swift; sourceTree = "<group>"; };
 		894BB2C6207C8BB800E65595 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		894BB2C8207C8C6600E65595 /* BWWAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = BWWAssets.xcassets; sourceTree = "<group>"; };
+		899CED2C2090735600E5DB46 /* RedeemLocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemLocationTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				8947FE2720885C4800D2B435 /* BeerChipTableViewController.swift */,
 				8947FE2520885C4800D2B435 /* CashOutViewController.swift */,
 				8947FE2620885C4800D2B435 /* RedeemBeerchipViewController.swift */,
+				899CED2C2090735600E5DB46 /* RedeemLocationTableViewCell.swift */,
 				894BB2C2207C84B000E65595 /* BeerboardBWWFrameworkStoryboard.storyboard */,
 				894BB2C8207C8C6600E65595 /* BWWAssets.xcassets */,
 				894BB2AC207C83B000E65595 /* Info.plist */,
@@ -236,6 +239,7 @@
 				894538FC20872A65007021F3 /* LocationTableViewCell.swift in Sources */,
 				894BB2C5207C879000E65595 /* BeerboardBWWViewController.swift in Sources */,
 				8947FE2920885C4800D2B435 /* CashOutViewController.swift in Sources */,
+				899CED2D2090735600E5DB46 /* RedeemLocationTableViewCell.swift in Sources */,
 				8947FE2820885C4800D2B435 /* BeerchipTableViewCell.swift in Sources */,
 				894BB2C7207C8BB800E65595 /* WelcomeViewController.swift in Sources */,
 				89379AAE208616560001CD15 /* RedeemviewBeerchipTableSubTitlesTableViewCell.swift in Sources */,

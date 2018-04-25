@@ -10,7 +10,10 @@ import UIKit
 
 public class WelcomeViewController: UIViewController {
     
-       
+    
+    
+    @IBOutlet weak var beerchiptableContainerView: UIView!
+    
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var beerMenuTableView: UITableView!
     
@@ -145,7 +148,7 @@ public class WelcomeViewController: UIViewController {
         
         if isBeerchipTableVCAdding {
             self.addChildViewController(beerchipTableVC)
-            beerchipTableVC.view.frame = CGRect(x: 0, y: 232, width:  UIScreen.main.bounds.width, height: (UIScreen.main.bounds.height-257))
+            beerchipTableVC.view.frame = CGRect(x: 0, y: 232, width:  UIScreen.main.bounds.width, height: (beerchiptableContainerView.bounds.height))
             contentView.addSubview(beerchipTableVC.view)
             beerchipTableVC.didMove(toParentViewController: self)
             isBeerchipTableVCAdding = false
@@ -205,7 +208,6 @@ extension WelcomeViewController:UITableViewDelegate,UITableViewDataSource{
             }
             else{
             
-            
             let   cell  = tableView.dequeueReusableCell(withIdentifier: "locationCell") as! LocationTableViewCell
             cell.locationNameLbl.text = locationArr[indexPath.row-1]
             let backgroundView = UIView()
@@ -218,25 +220,12 @@ extension WelcomeViewController:UITableViewDelegate,UITableViewDataSource{
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if tableView == beerMenuTableView {
-  
-            isTableClicked = true
-        }else{
-            let locationName = locationArr[indexPath.row]
+        if tableView == locationTableView {
+            let locationName = locationArr[indexPath.row-1]
             locationIndicatorBtn.setTitle(locationName, for: .normal)
             alphaView.isHidden = true
             locationTableContainerView.isHidden = true
-            
             usedefaults.set(locationName, forKey: "location")
-            
-            if isRedeemBeerchipLocation{
-                UserDefaults.standard.set(locationName, forKey: "location")
-                redeemBtn.setTitle("REDEEM", for: .normal)
-            }
-            
-            let cell = locationTableView.cellForRow(at: indexPath) as! LocationTableViewCell
-            cell.locationNameLbl.textColor = .white
-          
         }
     }
 }

@@ -635,6 +635,7 @@
                         <outlet property="alphaView" destination="9tZ-BA-omO" id="xOT-cc-nCB"/>
                         <outlet property="beerMenuSegmentedControl" destination="rBW-wF-4TT" id="T2u-v5-8Ik"/>
                         <outlet property="beerMenuTableView" destination="mae-dE-ii8" id="idh-wj-KHk"/>
+                        <outlet property="beerchiptableContainerView" destination="75Q-HV-B2a" id="7Iz-4G-rRO"/>
                         <outlet property="cashOutBtn" destination="Zj8-eP-Z4W" id="sbf-lf-6bp"/>
                         <outlet property="cashOutBtnView" destination="g8d-dI-Tae" id="CRV-N8-kZD"/>
                         <outlet property="contentView" destination="WJn-mf-fUN" id="Bjo-rm-RLe"/>
@@ -1188,11 +1189,11 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zxo-OU-dz5" userLabel="locationTableContainerView">
                                 <rect key="frame" x="10" y="40" width="355" height="577"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cRc-x3-eLH">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cRc-x3-eLH">
                                         <rect key="frame" x="0.0" y="10" width="355" height="567"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="locationTitleCell" rowHeight="92" id="f7U-eP-dAV" customClass="LocationTableViewCell" customModule="BeerboardBWWFramework" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="locationTitleCell" rowHeight="92" id="f7U-eP-dAV" customClass="RedeemLocationTableViewCell" customModule="BeerboardBWWFramework" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="355" height="92"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="f7U-eP-dAV" id="3dV-lo-RvC">
@@ -1215,14 +1216,14 @@
                                                     </constraints>
                                                 </tableViewCellContentView>
                                             </tableViewCell>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="locationCell" rowHeight="92" id="xfR-DH-O6D" customClass="LocationTableViewCell" customModule="BeerboardBWWFramework" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="locationCell" rowHeight="92" id="xfR-DH-O6D" customClass="RedeemLocationTableViewCell" customModule="BeerboardBWWFramework" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="120" width="355" height="92"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xfR-DH-O6D" id="Pg2-de-VXJ">
                                                     <rect key="frame" x="0.0" y="0.0" width="355" height="91.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" tag="99" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LocationName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d9z-w6-Y0N">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LocationName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d9z-w6-Y0N">
                                                             <rect key="frame" x="8" y="6" width="118" height="79.5"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -1237,7 +1238,7 @@
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
-                                                    <outlet property="locationNameLbl" destination="d9z-w6-Y0N" id="iVu-GS-BXz"/>
+                                                    <outlet property="redeemLocationName" destination="d9z-w6-Y0N" id="RrD-X7-tbw"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
