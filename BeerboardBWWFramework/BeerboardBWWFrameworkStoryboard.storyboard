@@ -645,7 +645,7 @@
                         <outlet property="locationTableView" destination="rdW-KH-Gjq" id="bBb-q6-D8w"/>
                         <outlet property="myBalanceDisplayLable" destination="DTS-Q1-ety" id="8Ct-MO-2DT"/>
                         <outlet property="redeemBtn" destination="FT0-hT-7Is" id="9G7-2X-o5f"/>
-                        <segue destination="UKf-h7-wdJ" kind="show" identifier="RedeemBeerchipSegue" id="7z9-Pn-UrZ"/>
+                        <segue destination="UKf-h7-wdJ" kind="show" identifier="RedeemBeerchipVCSegue" id="7z9-Pn-UrZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="brs-sP-ssd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1088,7 +1088,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6gt-0h-sdY">
-                                                        <rect key="frame" x="227" y="60" width="140" height="35"/>
+                                                        <rect key="frame" x="227" y="64" width="140" height="27.5"/>
                                                         <color key="backgroundColor" name="systemYellowColor" catalog="System" colorSpace="catalog"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="140" id="rgy-ch-DXl"/>
@@ -1184,14 +1184,14 @@
                                                     <constraint firstItem="kZd-bL-IYs" firstAttribute="centerX" secondItem="B1o-IA-IKQ" secondAttribute="centerX" constant="40" id="dJm-nV-R2y"/>
                                                     <constraint firstItem="kZd-bL-IYs" firstAttribute="leading" secondItem="L73-lX-zhX" secondAttribute="trailing" constant="8" id="e8o-0Y-bNe"/>
                                                     <constraint firstItem="kZd-bL-IYs" firstAttribute="top" secondItem="L73-lX-zhX" secondAttribute="top" id="jGA-3H-SG2"/>
-                                                    <constraint firstItem="6gt-0h-sdY" firstAttribute="bottom" secondItem="TiE-PM-djp" secondAttribute="bottom" id="jaP-u1-qCP"/>
+                                                    <constraint firstItem="6gt-0h-sdY" firstAttribute="bottom" secondItem="TiE-PM-djp" secondAttribute="bottom" constant="-3.5" id="jaP-u1-qCP"/>
                                                     <constraint firstItem="8b7-fc-qG7" firstAttribute="leading" secondItem="aKI-Cz-9wQ" secondAttribute="trailing" constant="3" id="mCJ-xz-XMl"/>
                                                     <constraint firstItem="JQD-ar-mgC" firstAttribute="leading" secondItem="B1o-IA-IKQ" secondAttribute="leading" constant="8" id="meG-75-CPq"/>
                                                     <constraint firstItem="YlC-1G-EgS" firstAttribute="top" secondItem="4kp-8k-J6z" secondAttribute="bottom" constant="10" id="pRA-m9-2UO"/>
                                                     <constraint firstItem="TiE-PM-djp" firstAttribute="top" secondItem="JQD-ar-mgC" secondAttribute="bottom" constant="10" id="poY-hv-pkP"/>
                                                     <constraint firstItem="MeY-gZ-YBb" firstAttribute="leading" secondItem="B1o-IA-IKQ" secondAttribute="leading" constant="8" id="ri5-WR-bbZ"/>
                                                     <constraint firstAttribute="bottom" secondItem="kZd-bL-IYs" secondAttribute="bottom" constant="25" id="tqR-rH-fJi"/>
-                                                    <constraint firstItem="6gt-0h-sdY" firstAttribute="top" secondItem="TiE-PM-djp" secondAttribute="top" id="w0N-jH-oce"/>
+                                                    <constraint firstItem="6gt-0h-sdY" firstAttribute="top" secondItem="TiE-PM-djp" secondAttribute="top" constant="3.5" id="w0N-jH-oce"/>
                                                 </constraints>
                                             </view>
                                             <view alpha="0.60000002384185791" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7yU-bl-pXS" userLabel="alphaView">
