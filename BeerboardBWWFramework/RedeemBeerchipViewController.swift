@@ -25,6 +25,9 @@ class RedeemBeerchipViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var locationsTable: UITableView!
     @IBOutlet weak var locationTableContainerView: UIView!
     
+    @IBOutlet weak var submitButton: UIButton!
+    
+    
     var isCashoutVCAdding = false
     var isCashoutVCRemoving = false
     
@@ -38,8 +41,11 @@ class RedeemBeerchipViewController: UIViewController,UITextFieldDelegate {
     var redeemBeerchipVCDelegate : redeemBeerchipVCProtocol?
     
     override func viewDidLoad() {
-        super.viewDidLoad()        
-        redeemBeerchipVCLocationIndicatorBtn.layer.cornerRadius = 8.0
+        super.viewDidLoad()
+        
+        redeemBeerchipVCLocationIndicatorBtn.layer.cornerRadius = 4.0
+        cashoutBtn.layer.cornerRadius = 8.0
+        submitButton.layer.cornerRadius = 8.0
         self.title = "REDEEM A BEERCHIP"
         locationArr = ["Cahokia","Canton","Camillus","Columbus","Dalton","Douglas","East Hartford","East Haven","Enfield","Fairfield","Farmington","Greenwich","Groton"]
         

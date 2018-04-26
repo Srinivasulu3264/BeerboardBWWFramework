@@ -23,9 +23,9 @@ class BeerChipTableViewController: UIViewController {
         super.viewDidLoad()
 
         beerchipTable.tableFooterView = UIView()
-        beerNamesArr = ["FOUNDERS ALL DAY IPA" , "HEINEKEN" ,"LAGUNITAS IPA","FOUNDERS ALL DAY IPA" , "HEINEKEN" ,"LAGUNITAS IPA"]
-        beerCostArr = ["$11.00","$2.00","$2.00","$1.50","$2.00","$2.00"]
-        beerSubtitlsArr = ["American IPA/ Founders Brewing / Grand Rapids,MI","Euro Lager/Heineken/Amsterdam ,NLD","American IPA /Lagunitas brewing/Petaluma CA","American IPA/ Founders Brewing / Grand Rapids,MI","Euro Lager/Heineken/Amsterdam ,NLD","American IPA /Lagunitas brewing/Petaluma CA"]
+        beerNamesArr = ["FOUNDERS ALL DAY IPA" , "HEINEKEN" ,"LAGUNITAS IPA","FOUNDERS ALL DAY IPA" , "HEINEKEN"]
+        beerCostArr = ["$11.00","$2.00","$2.00","$3.50","$2.00"]
+        beerSubtitlsArr = ["American IPA/ Founders Brewing / Grand Rapids,MI","Euro Lager/Heineken/Amsterdam ,NLD","American IPA /Lagunitas brewing/Petaluma CA","American IPA/ Founders Brewing / Grand Rapids,MI","Euro Lager/Heineken/Amsterdam ,NLD"]
         // Do any additional setup after loading the view.
     }
 }
@@ -45,8 +45,5 @@ extension BeerChipTableViewController:UITableViewDataSource,UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        
     }
-    
 }

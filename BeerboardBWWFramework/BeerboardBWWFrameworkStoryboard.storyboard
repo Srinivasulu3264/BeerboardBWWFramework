@@ -1325,6 +1325,7 @@
                         <outlet property="receiptIDTxtfield" destination="YlC-1G-EgS" id="y5G-ka-X70"/>
                         <outlet property="redeemBeerchipVCLocationIndicatorBtn" destination="6gt-0h-sdY" id="4fH-er-6jK"/>
                         <outlet property="scrollView" destination="GVJ-la-i3e" id="tLi-DH-iFe"/>
+                        <outlet property="submitButton" destination="MeY-gZ-YBb" id="cQ4-8I-ErZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="es7-As-tga" userLabel="First Responder" sceneMemberID="firstResponder"/>
