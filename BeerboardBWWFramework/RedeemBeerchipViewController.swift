@@ -38,8 +38,7 @@ class RedeemBeerchipViewController: UIViewController,UITextFieldDelegate {
     var redeemBeerchipVCDelegate : redeemBeerchipVCProtocol?
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-
+        super.viewDidLoad()        
         redeemBeerchipVCLocationIndicatorBtn.layer.cornerRadius = 8.0
         self.title = "REDEEM A BEERCHIP"
         locationArr = ["Cahokia","Canton","Camillus","Columbus","Dalton","Douglas","East Hartford","East Haven","Enfield","Fairfield","Farmington","Greenwich","Groton"]
