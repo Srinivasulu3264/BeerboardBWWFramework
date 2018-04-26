@@ -11,7 +11,7 @@ import UIKit
 
 protocol redeemBeerchipVCProtocol {
     
-    func displayLocationTable()
+    func customBackButtonAction()
 }
 
 
@@ -26,7 +26,7 @@ class RedeemBeerchipViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var alphaView: UIView!
     
-    @IBOutlet weak var redeemVClocationsTable: UITableView!
+    @IBOutlet weak var locationsTable: UITableView!
     
     @IBOutlet weak var locationTableContainerView: UIView!
     
@@ -47,12 +47,11 @@ class RedeemBeerchipViewController: UIViewController,UITextFieldDelegate {
 
         redeemBeerchipVCLocationIndicatorBtn.layer.cornerRadius = 8.0
         
-        redeemVClocationsTable.delegate = self
-        redeemVClocationsTable.dataSource = self
         
         locationArr = ["Cahokia","Canton","Camillus","Columbus","Dalton","Douglas","East Hartford","East Haven","Enfield","Fairfield","Farmington","Greenwich","Groton"]
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard(_:)))
+        tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
         receiptIDTxtfield.delegate = self
         
@@ -65,8 +64,27 @@ class RedeemBeerchipViewController: UIViewController,UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector:#selector(RedeemBeerchipViewController.keyboardWasShown(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil);
         NotificationCenter.default.addObserver(self, selector: #selector(RedeemBeerchipViewController.KeyboaredWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
+        self.navigationItem.setHidesBackButton(true, animated: false)
+        let btn1 = UIButton(type: .custom)
+        btn1.setImage(UIImage(named: "back-icon.png"), for: .normal)
+        btn1.setTitle("BEERCHIPS", for: .normal)
+        btn1.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        btn1.addTarget(self, action: #selector(backAction), for: .touchUpInside)
+        let item1 = UIBarButtonItem(customView: btn1)
+        self.navigationItem.setLeftBarButton(item1, animated: true)
+        
+        
+        let index = NSIndexPath(row: 3, section: 0)
+        self.locationsTable.selectRow(at: index as IndexPath, animated: true, scrollPosition: UITableViewScrollPosition.middle)
         // Do any additional setup after loading the view.
     }
+    
+    
+    @objc func backAction()  {
+           redeemBeerchipVCDelegate?.customBackButtonAction()
+    }
+    
+    
     
     @objc func keyboardWasShown(_ aNotification: Notification){
         print("keypadShow");
@@ -79,11 +97,6 @@ class RedeemBeerchipViewController: UIViewController,UITextFieldDelegate {
         if !aRect.contains(activeField.frame.origin){
             self.scrollView.scrollRectToVisible(activeField.frame, animated: true);
         }
-        
-        if self.view.frame.origin.y == 0{
-            self.view.frame.origin.y -= kbSize.height-200
-            print(self.view.frame.origin.y)
-        }
     }
     
     @objc func KeyboaredWillHide(){
@@ -95,8 +108,6 @@ class RedeemBeerchipViewController: UIViewController,UITextFieldDelegate {
             self.view.frame.origin.y = 64
         }
     }
-    
-    
     
     override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -120,9 +131,6 @@ class RedeemBeerchipViewController: UIViewController,UITextFieldDelegate {
     }
 
     @IBAction func redeemBeerchipVCLocationIndicationBtnAction(_ sender: Any) {
-        
-        redeemBeerchipVCDelegate?.displayLocationTable()
-        
         alphaView.isHidden = false
         locationTableContainerView.isHidden = false
     }
@@ -175,21 +183,22 @@ extension RedeemBeerchipViewController:UITableViewDelegate,UITableViewDataSource
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-            if indexPath.row == 0 {
-                let   cell  = tableView.dequeueReusableCell(withIdentifier: "locationTitle") as! RedeemLocationTitleTableViewCell
-                cell.redeemlocationTitleLabel.text = "LOCATIONS"
-  
-                return cell
-            }
-            else{
-                
-                let   cell  = tableView.dequeueReusableCell(withIdentifier: "locationName") as! RedeemLocationTableViewCell
-                cell.redeemLocationName.text = locationArr[indexPath.row-1]
-                let backgroundView = UIView()
-                backgroundView.backgroundColor = #colorLiteral(red: 1, green: 0.8, blue: 0, alpha: 1)
-                cell.selectedBackgroundView = backgroundView
-                return cell
-            }
+        if indexPath.row == 0 {
+            let   cell  = tableView.dequeueReusableCell(withIdentifier: "locationTitleCell") as! LocationTableViewCell
+            let label = cell.viewWithTag(99) as! UILabel
+            label.text = "LOCATIONS"
+            label.font = UIFont .systemFont(ofSize: 25.0)
+            return cell
+        }
+        else{
+            
+            let   cell  = tableView.dequeueReusableCell(withIdentifier: "locationCell") as! LocationTableViewCell
+            cell.locationNameLbl.text = locationArr[indexPath.row-1]
+            let backgroundView = UIView()
+            backgroundView.backgroundColor = #colorLiteral(red: 1, green: 0.8, blue: 0, alpha: 1)
+            cell.selectedBackgroundView = backgroundView
+            return cell
+        }
         
     }
     

@@ -45,6 +45,7 @@ public class WelcomeViewController: UIViewController {
     var beerMenuImagesArr = [String]()
     
     var beerchipTableVC = BeerChipTableViewController()
+     var redeemBeerchipVC = RedeemBeerchipViewController()
     
     
     var isTableClicked = false
@@ -82,6 +83,8 @@ public class WelcomeViewController: UIViewController {
         let beerboardBWWStoryboard = UIStoryboard(name: "BeerboardBWWFrameworkStoryboard", bundle: Bundle(for: BeerboardBWWViewController.self))
         
         beerchipTableVC =  beerboardBWWStoryboard.instantiateViewController(withIdentifier: "BeerChipTableViewController") as! BeerChipTableViewController
+        redeemBeerchipVC =  beerboardBWWStoryboard.instantiateViewController(withIdentifier: "RedeemBeerchipViewController") as! RedeemBeerchipViewController
+        redeemBeerchipVC.redeemBeerchipVCDelegate = self
         
         let index = NSIndexPath(row: 3, section: 0)
         self.locationTableView.selectRow(at: index as IndexPath, animated: true, scrollPosition: UITableViewScrollPosition.middle)
@@ -160,6 +163,19 @@ public class WelcomeViewController: UIViewController {
             beerchipTableVC.removeFromParentViewController()
             isBeerchipTableVCRemoving = false
         }
+    }
+}
+
+
+extension WelcomeViewController:redeemBeerchipVCProtocol{
+    
+    func customBackButtonAction() {
+        currentBalancedisplayLbl.text = "$20.50"
+        myBalanceDisplayLable.text = "$20.50"
+        cashOutBtnView.isHidden = true
+        
+        isBeerchipTableVCAdding = true
+        beerChipTableVCAddingAndRemoving()
     }
 }
 
