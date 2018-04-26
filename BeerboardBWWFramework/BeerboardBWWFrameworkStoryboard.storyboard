@@ -929,12 +929,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dG7-xy-ZgT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2034" y="-390"/>
+            <point key="canvasLocation" x="2161" y="-364"/>
         </scene>
         <!--Redeem Beerchip View Controller-->
         <scene sceneID="BPt-ep-S6c">
             <objects>
-                <viewController id="UKf-h7-wdJ" customClass="RedeemBeerchipViewController" customModule="BeerboardBWWFramework" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RedeemBeerchipViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UKf-h7-wdJ" customClass="RedeemBeerchipViewController" customModule="BeerboardBWWFramework" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ShV-jJ-pP4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

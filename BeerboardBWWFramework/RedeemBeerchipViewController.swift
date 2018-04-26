@@ -10,7 +10,6 @@ import UIKit
 
 
 protocol redeemBeerchipVCProtocol {
-    
     func customBackButtonAction()
 }
 
@@ -19,15 +18,11 @@ class RedeemBeerchipViewController: UIViewController,UITextFieldDelegate {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var cashoutBtn: UIButton!
-    
     @IBOutlet weak var receiptIDTxtfield: UITextField!
     @IBOutlet weak var redeemBeerchipVCLocationIndicatorBtn: UIButton!
-    
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var alphaView: UIView!
-    
     @IBOutlet weak var locationsTable: UITableView!
-    
     @IBOutlet weak var locationTableContainerView: UIView!
     
     var isCashoutVCAdding = false
@@ -46,13 +41,13 @@ class RedeemBeerchipViewController: UIViewController,UITextFieldDelegate {
         super.viewDidLoad()
 
         redeemBeerchipVCLocationIndicatorBtn.layer.cornerRadius = 8.0
-        
-        
+        self.title = "REDEEM A BEERCHIP"
         locationArr = ["Cahokia","Canton","Camillus","Columbus","Dalton","Douglas","East Hartford","East Haven","Enfield","Fairfield","Farmington","Greenwich","Groton"]
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard(_:)))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
+       
         receiptIDTxtfield.delegate = self
         
         let beerboardBWWStoryboard = UIStoryboard(name: "BeerboardBWWFrameworkStoryboard", bundle: Bundle(for: CashOutViewController.self))
@@ -64,26 +59,37 @@ class RedeemBeerchipViewController: UIViewController,UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector:#selector(RedeemBeerchipViewController.keyboardWasShown(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil);
         NotificationCenter.default.addObserver(self, selector: #selector(RedeemBeerchipViewController.KeyboaredWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
-        self.navigationItem.setHidesBackButton(true, animated: false)
-        let btn1 = UIButton(type: .custom)
-        btn1.setImage(UIImage(named: "back-icon.png"), for: .normal)
-        btn1.setTitle("BEERCHIPS", for: .normal)
-        btn1.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        btn1.addTarget(self, action: #selector(backAction), for: .touchUpInside)
-        let item1 = UIBarButtonItem(customView: btn1)
-        self.navigationItem.setLeftBarButton(item1, animated: true)
-        
-        
         let index = NSIndexPath(row: 3, section: 0)
         self.locationsTable.selectRow(at: index as IndexPath, animated: true, scrollPosition: UITableViewScrollPosition.middle)
+        
+        let customView = UIView(frame: CGRect(x: -10.0, y: 0.0, width: 120.0, height: 30.0))
+       
+        let customBackButton = UIButton.init(type: .custom)
+        customBackButton.frame = CGRect(x: -10.0, y: 0.0, width: 120.0, height: 30.0)
+        customBackButton.addTarget(self, action: #selector(backAction), for: .touchUpInside)
+        customView.addSubview(customBackButton)
+        
+        let backBtnimageview = UIImageView(frame: CGRect(x: -10.0, y: 7.5, width: 15.0, height: 15.0))
+        backBtnimageview.image = UIImage(named: "back-icon.png")
+        customView.addSubview(backBtnimageview)
+        
+        let backButtonTitle = UILabel(frame: CGRect(x: 5, y: 0.0, width: 120.0, height: 30.0))
+        backButtonTitle.text = "BEERCHIPS"
+        backButtonTitle.textColor = #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
+        backButtonTitle.textAlignment = NSTextAlignment.left
+        customView.addSubview(backButtonTitle)
+        
+        let leftButton = UIBarButtonItem(customView: customView)
+        self.navigationItem.leftBarButtonItem = leftButton
+        
         // Do any additional setup after loading the view.
     }
     
     
     @objc func backAction()  {
+          self.navigationController?.popViewController(animated: true)
            redeemBeerchipVCDelegate?.customBackButtonAction()
     }
-    
     
     
     @objc func keyboardWasShown(_ aNotification: Notification){
@@ -111,9 +117,7 @@ class RedeemBeerchipViewController: UIViewController,UITextFieldDelegate {
     
     override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         var userdefaultsLocation = UserDefaults.standard.string(forKey: "location")
-        
         if userdefaultsLocation == nil {
             userdefaultsLocation = "CAMILLUS"
         }
@@ -177,8 +181,7 @@ class RedeemBeerchipViewController: UIViewController,UITextFieldDelegate {
 extension RedeemBeerchipViewController:UITableViewDelegate,UITableViewDataSource{
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    
-            return locationArr.count
+        return locationArr.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -191,7 +194,6 @@ extension RedeemBeerchipViewController:UITableViewDelegate,UITableViewDataSource
             return cell
         }
         else{
-            
             let   cell  = tableView.dequeueReusableCell(withIdentifier: "locationCell") as! LocationTableViewCell
             cell.locationNameLbl.text = locationArr[indexPath.row-1]
             let backgroundView = UIView()
@@ -199,16 +201,13 @@ extension RedeemBeerchipViewController:UITableViewDelegate,UITableViewDataSource
             cell.selectedBackgroundView = backgroundView
             return cell
         }
-        
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-             let locationName = locationArr[indexPath.row-1]
+            let locationName = locationArr[indexPath.row-1]
             redeemBeerchipVCLocationIndicatorBtn.setTitle(locationName, for: .normal)
             alphaView.isHidden = true
             locationTableContainerView.isHidden = true            
             usedefaults.set(locationName, forKey: "location")
    }
-    
 }

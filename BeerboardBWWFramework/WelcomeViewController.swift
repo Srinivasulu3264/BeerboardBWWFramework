@@ -45,15 +45,8 @@ public class WelcomeViewController: UIViewController {
     var beerMenuImagesArr = [String]()
     
     var beerchipTableVC = BeerChipTableViewController()
-     var redeemBeerchipVC = RedeemBeerchipViewController()
-    
-    
-    var isTableClicked = false
-    
     var isBeerchipTableVCAdding = false
     var isBeerchipTableVCRemoving = false
-    
-    var isRedeemBeerchipLocation = false
     var usedefaults = UserDefaults.standard
     
     override public func viewDidLoad() {
@@ -79,13 +72,9 @@ public class WelcomeViewController: UIViewController {
         alphaView.isHidden = true
         locationTableContainerView.isHidden = true
         
-        
         let beerboardBWWStoryboard = UIStoryboard(name: "BeerboardBWWFrameworkStoryboard", bundle: Bundle(for: BeerboardBWWViewController.self))
-        
         beerchipTableVC =  beerboardBWWStoryboard.instantiateViewController(withIdentifier: "BeerChipTableViewController") as! BeerChipTableViewController
-        redeemBeerchipVC =  beerboardBWWStoryboard.instantiateViewController(withIdentifier: "RedeemBeerchipViewController") as! RedeemBeerchipViewController
-        redeemBeerchipVC.redeemBeerchipVCDelegate = self
-        
+     
         let index = NSIndexPath(row: 3, section: 0)
         self.locationTableView.selectRow(at: index as IndexPath, animated: true, scrollPosition: UITableViewScrollPosition.middle)
         
@@ -114,7 +103,6 @@ public class WelcomeViewController: UIViewController {
         
         if beerMenuSegmentedControl.selectedSegmentIndex == 0 {
             print("called segmnet 0")
-            
             currentBalancedisplayLbl.text = "$7.50"
             myBalanceDisplayLable.text = "$7.50"
             cashOutBtnView.isHidden = false
@@ -127,7 +115,6 @@ public class WelcomeViewController: UIViewController {
             currentBalancedisplayLbl.text = "$20.50"
             myBalanceDisplayLable.text = "$20.50"
             cashOutBtnView.isHidden = true
-            
             isBeerchipTableVCAdding = true
             beerChipTableVCAddingAndRemoving()
         }
@@ -137,8 +124,17 @@ public class WelcomeViewController: UIViewController {
     
     @IBAction func redeemButtonAction(_ sender: Any) {
         
-        performSegue(withIdentifier: "RedeemBeerchipSegue", sender: self)
+        performSegue(withIdentifier: "RedeemBeerchipVCSegue", sender: self)
 
+    }
+    
+    open override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.identifier == "RedeemBeerchipVCSegue"
+        {
+            let destinationVC = segue.destination as! RedeemBeerchipViewController
+            destinationVC.redeemBeerchipVCDelegate = self
+        }
     }
     
     @IBAction func locationIndicatorBtnAction(_ sender: Any) {
@@ -166,14 +162,12 @@ public class WelcomeViewController: UIViewController {
     }
 }
 
-
 extension WelcomeViewController:redeemBeerchipVCProtocol{
-    
     func customBackButtonAction() {
+        beerMenuSegmentedControl.selectedSegmentIndex = 1
         currentBalancedisplayLbl.text = "$20.50"
         myBalanceDisplayLable.text = "$20.50"
         cashOutBtnView.isHidden = true
-        
         isBeerchipTableVCAdding = true
         beerChipTableVCAddingAndRemoving()
     }
