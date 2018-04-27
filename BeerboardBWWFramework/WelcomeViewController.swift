@@ -94,8 +94,7 @@ public class WelcomeViewController: UIViewController {
     
     @IBAction func cashOutBtnAction(_ sender: Any) {
        
-        alphaView.isHidden = false
-        locationTableContainerView.isHidden = false
+      
     }
     
     
